@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# cd build
+# ndkdir=/path/to/standalone/ndk/root ../external-libs/openssl/build.sh
+
 OPENSSL_VERSION="1.0.2n"
 
 BUILD_ROOT=`pwd`
@@ -17,5 +20,5 @@ perl -pi -e 's/install: all install_docs install_sw/install: install_docs instal
 CROSS_COMPILE= CC="$ndkdir/bin/arm-linux-androideabi-gcc" ./Configure shared no-ssl2 no-ssl3 no-comp no-hw no-engine android-armv7 --openssldir=$OPENSSL_BUILD_ROOT
 make build_libs
 
-cp -v libcrypto.a "$BUILD_ROOT/../../external-libs/openssl/lib/armeabi-v7a/"
-cp -v libssl.a "$BUILD_ROOT/../../external-libs/openssl/lib/armeabi-v7a/"
+cp -v libcrypto.a "$BUILD_ROOT/../external-libs/openssl/lib/armeabi-v7a/"
+cp -v libssl.a "$BUILD_ROOT/../external-libs/openssl/lib/armeabi-v7a/"
